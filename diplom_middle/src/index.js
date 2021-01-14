@@ -1,12 +1,10 @@
-import burgerCreate from './modules/burger';
+import handleBurger from './modules/burger';
 import calculator from './modules/calculator';
-import arrow from './modules/arrow';
+import menuClubs from './modules/menuClubs';
 import popup from './modules/popup';
 
 
 
-console.log(burgerCreate());
-console.log(arrow());
-console.log(popup());
-console.log(calculator());
+handleBurger();
+menuClubs();
 
