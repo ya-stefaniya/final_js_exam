@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log(10),console.log(void console.log("я стрелка")),console.log(30),console.log((console.log("я калькулятор"),75))})();
