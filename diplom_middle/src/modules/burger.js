@@ -21,11 +21,7 @@ const burgerCreate = ()=>{
             let scroll = window.pageYOffset;
             scroll > (clubs.offsetTop-50) ? arrow.style.display = 'inline-block' : 
             arrow.style.display = 'none';
-            if (scroll > topMenu.offsetTop) {
-                topMenu.style.position = 'fixed';
-            } else {
-                topMenu.style.position = 'relative';
-            }
+            scroll > topMenu.offsetTop ? topMenu.style.position = 'fixed' : topMenu.style.position = 'relative';
     });
 }
 export default burgerCreate;
