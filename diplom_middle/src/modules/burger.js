@@ -13,17 +13,14 @@ const burgerCreate = ()=>{
             }
         })
 
-//fix burger btn while scrolling
+//fix burger btn while scrolling && arrowFix
     window.addEventListener("scroll", ()=>{
         const topMenu = document.querySelector('.top-menu'),
             arrow = document.querySelector('#totop'),
             clubs = document.querySelector('#clubs')
             let scroll = window.pageYOffset;
-
-            console.log('clubs.offsetTop: ', clubs.offsetTop);
-            scroll > clubs.offsetTop ? arrow.style.display = 'inline-block' : 
+            scroll > (clubs.offsetTop-50) ? arrow.style.display = 'inline-block' : 
             arrow.style.display = 'none';
-
             if (scroll > topMenu.offsetTop) {
                 topMenu.style.position = 'fixed';
             } else {
