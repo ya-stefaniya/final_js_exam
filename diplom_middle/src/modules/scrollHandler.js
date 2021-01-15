@@ -1,15 +1,16 @@
 //fix burger btn while scrolling && arrowFix
 const scrollHandler = ()=>{
-    window.addEventListener("scroll", ()=>{
     const topMenu = document.querySelector('.top-menu'),
-        arrow = document.querySelector('#totop'),
-        headSlider= document.querySelector('.head-slider');
-        let scroll = window.pageYOffset;
+    arrow = document.querySelector('#totop'),
+    headSlider= document.querySelector('.head-slider');
+    let scroll;
+    arrow.style.display = 'none';
 
-        if(topMenu){
+    const burgerArrowFix = () =>{
+        scroll = window.pageYOffset;
             scroll > headSlider.offsetTop ? (topMenu.style.position = 'fixed') &&  (arrow.style.display = 'inline-block') : (topMenu.style.position = 'relative') && (arrow.style.display = 'none');
-        }
-    });
+    }
+    window.addEventListener("scroll", burgerArrowFix);
 };
 
 export default scrollHandler;
