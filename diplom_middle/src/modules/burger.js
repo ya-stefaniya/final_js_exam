@@ -17,15 +17,5 @@ const handleBurger = ()=>{
             }
         })
 
-//fix burger btn while scrolling && arrowFix
-    window.addEventListener("scroll", ()=>{
-        const topMenu = document.querySelector('.top-menu'),
-            arrow = document.querySelector('#totop'),
-            clubs = document.querySelector('#clubs')
-            let scroll = window.pageYOffset;
-            scroll > (clubs.offsetTop-50) ? arrow.style.display = 'inline-block' : 
-            arrow.style.display = 'none';
-            scroll > topMenu.offsetTop ? topMenu.style.position = 'fixed' : topMenu.style.position = 'relative';
-    });
 }
 export default handleBurger;
