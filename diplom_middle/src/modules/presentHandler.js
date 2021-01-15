@@ -1,3 +1,5 @@
+import closeModal from './closeModal';
+
 const presentHandler = () => {
     try{
         const gift = document.querySelector('.fixed-gift'),
@@ -9,10 +11,7 @@ const presentHandler = () => {
             })
 
             giftModal.addEventListener('click', (e)=>{
-                let target = e.target;
-                if(target.className.match(/close[-btn_icon]/) || !target.closest('.form-wrapper')){
-                    giftModal.style.display = 'none';
-                }                    
+                closeModal(e.target, giftModal);            
             })
 
     }catch(error){}
