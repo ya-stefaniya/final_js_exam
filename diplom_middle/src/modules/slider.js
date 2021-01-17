@@ -17,10 +17,10 @@ const slider = () => {
             }
             nextSlide(slides, curSlide);
         };
-        const startSlide  = (time = 3000) => {
+        const startSlide  = (time) => {
             setInterval(autoPlay, time);
         };
-        startSlide(2000);
+        startSlide(4000);
     }catch(e){}
 }
 
