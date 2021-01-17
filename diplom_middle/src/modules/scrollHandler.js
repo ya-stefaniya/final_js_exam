@@ -8,7 +8,7 @@ const scrollHandler = ()=>{
 
     const burgerArrowFix = () =>{
         scroll = window.pageYOffset;
-            scroll > headSlider.offsetTop ? (topMenu.style.position = 'fixed') &&  (arrow.style.display = 'inline-block') : (topMenu.style.position = 'relative') && (arrow.style.display = 'none');
+            scroll > headSlider.offsetTop ? (topMenu.style.position = 'fixed') &&  (arrow.style.display = 'inline-block') : (topMenu.style.position = '') && (arrow.style.display = 'none');
     }
     window.addEventListener("scroll", burgerArrowFix);
 };
