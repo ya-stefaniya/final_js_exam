@@ -4,7 +4,6 @@ const formHandler= () => {
     const forms = document.querySelectorAll('form');
 
     [...forms].forEach((item) => {
-
         item.addEventListener('submit', (e) => {
             e.preventDefault();
             const loader = document.createElement('div'),
@@ -30,11 +29,6 @@ const formHandler= () => {
                 loader.appendChild(dot2);
                 loader.appendChild(dot3);
                 item.appendChild(loader);
-                // setTimeout(() => {
-                //     loader.remove();
-                //     goWrong();
-                //     popupClose();
-                // }, 6000);
             }                
             const popupClose = () =>{
                 const popups = document.querySelectorAll('.popup');
@@ -62,18 +56,24 @@ const formHandler= () => {
                 }
             } 
             const checkBox = () => {
-                const allInputs = item.querySelectorAll('input'); 
+                const allInputs = item.querySelectorAll('input');
+                //последняя форма 
                 if(item.id === 'footer_form'){
                     if(allInputs[0].checked || allInputs[1].checked) {
                         pm.remove();
                         checkbox = true;
                         sendForm();
+                        return;
+                    } else {
+                        const ch = document.querySelector('.message');
+                        if(!ch) message(item, 'radio');
+                        checkbox = false;
                     }
-                    return;
                 }
                 allInputs.forEach(input => {
+                    
                     if(input.type === 'checkbox' || input.type === 'radio'){
-                        input.setAttribute('required', true)
+                        input.setAttribute('required', true);
                         input.addEventListener('input', ()=>{
                             if(input.checked)
                             pm.remove();
@@ -136,6 +136,15 @@ const formHandler= () => {
         let allNames = document.querySelectorAll('input[name="name"]');
             [...allNames].forEach(name=>{
                 name.value =  name.value.replace(/[^а-яё ]/gi, '');
+                name.value.length < 2 ? 
+                name.setCustomValidity('Имя должно состоять минимум из 2 букв'):
+                name.setCustomValidity('');
+            })
+            let allphones = document.querySelectorAll('input[name="phone"]');
+            [...allphones].forEach(phone=>{
+                phone.value.length < 10 ? 
+                phone.setCustomValidity('Телефон должно состоять минимум из 10 цифр'):
+                phone.setCustomValidity('');
             })
         })
 
