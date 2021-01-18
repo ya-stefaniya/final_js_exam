@@ -47,7 +47,7 @@ const formHandler= () => {
                 pm.style.fontSize = '16px';
                 pm.style.color= 'red'; 
                 type === 'checkbox' ? pm.innerHTML = 'Нужно поставить галочку!' :
-                pm.innerHTML = 'Нужно выбрать зал!'
+                pm.innerHTML = 'Нужно выбрать клуб!'
                 const personalData =  item.querySelector('.personal-data');
                 if(personalData) {
                     personalData.appendChild(pm);
