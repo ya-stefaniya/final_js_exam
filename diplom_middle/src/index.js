@@ -22,7 +22,7 @@ try{
     presentHandler();
     slider();
     sliderGallery();
-   const options = { 
+    const options = { 
     wrap: '.services-slider',
     slidesToShow: 4,
     infinity: true,

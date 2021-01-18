@@ -64,7 +64,7 @@ class SliderCarousel{
                 display:flex !important;
                 transition: transform .3s !important;
                 will-change: tranform !important;
-                padding: 0 c!important;
+                padding: 0 !important;
                 margin: 0 29px !important;
             }
             .sliderCarousel__slide{

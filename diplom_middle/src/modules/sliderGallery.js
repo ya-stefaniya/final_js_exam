@@ -2,8 +2,6 @@ const sliderGallery = () => {
 
     const slider = document.querySelector('.gallery-slider');
     let slide = slider.querySelectorAll('.slide');
-    console.log('slide: ', slide);
-    
     let interval;
     let currentSlide = 0; 
     //slide[1].classList.add('active');
@@ -28,11 +26,17 @@ const sliderGallery = () => {
         allLi[0].classList.add('dot-active');
     };
     addDot();
-//номер слайда
-    const prevSlide = (elem, index, strClass) => { //действие для слайда который будет меняться
+    const dots = document.querySelectorAll('.dot');
+
+
+    const prevSlide = (elem, index, strClass) => { 
+        if(elem.length == currentSlide){
+            index = 0;
+            currentSlide = 0
+        }
         elem[index].classList.remove(strClass);
     };
-//действие для следующего нового слайда 
+
     const nextSlide = (elem, index, strClass) =>{
         //без этого костыля не листает вперед после последнего слайда
         if(elem.length == currentSlide){
@@ -43,28 +47,31 @@ const sliderGallery = () => {
     };
     const autoPlaySlide = () =>{
         prevSlide(slide, currentSlide, 'active');
-        //console.log('currentSlide: ', currentSlide);
+        prevSlide(dots, currentSlide, 'dot-active');
         currentSlide++;
         //дошли до конца => на первый слайд
         if(currentSlide >= slide.length){
             currentSlide=0;
         }
         nextSlide(slide, currentSlide, 'active');
+        nextSlide(dots, currentSlide, 'dot-active');
+
     }
-    const startSlide = (time = 10000) =>{
+    const startSlide = (time = 4000) =>{
         interval = setInterval(autoPlaySlide, time);
     };
+    startSlide();
 
     slider.addEventListener('click' , (e) =>{
         e.preventDefault();
-
         let target = e.target;
-        //if(!target.matches('.portfolio-btn')) return;
 
+        prevSlide(slide, currentSlide, 'active');
+        prevSlide(dots, currentSlide, 'dot-active');
 
-        if(target.matches("#arrow-right")){
+        if(target.closest('.next')){
             currentSlide++
-        } else if (target.matches("#arrow-left")){
+        } else if (target.closest('.prev')){
             currentSlide--
         }
         if(currentSlide>=slide.length){
@@ -72,13 +79,23 @@ const sliderGallery = () => {
         } else if (currentSlide<0){
             currentSlide = slide.length-1;
         }
-        nextSlide(slide, currentSlide, 'show');
+        nextSlide(slide, currentSlide, 'active');
+        nextSlide(dots, currentSlide, 'dot-active');
     });
-    startSlide();
+    const stopSlide = () =>{
+        clearInterval(interval);
+    };
 
-    // const stopSlide = () =>{
-    //     clearInterval(interval);
-    // };
+    slider.addEventListener('mouseover', (e) =>{
+        if(e.target.closest('.prev, .next, .dot')){
+            stopSlide();
+        }
+    })
+    slider.addEventListener('mouseout', (e) =>{
+        if(e.target.closest('.prev, .next, .dot')){
+            startSlide();
+        }
+    })
 
 };
 
