@@ -78,6 +78,12 @@ const sliderGallery = () => {
             currentSlide === 0;
         } else if (currentSlide<0){
             currentSlide = slide.length-1;
+        } else if (target.closest('.dot')){
+            dots.forEach((elem, i) => {
+                if(elem === target){
+                    currentSlide = i;
+                }
+            })
         }
         nextSlide(slide, currentSlide, 'active');
         nextSlide(dots, currentSlide, 'dot-active');

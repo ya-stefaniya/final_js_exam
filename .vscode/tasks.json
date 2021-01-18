@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "watch",
+			"path": "diplom_middle/",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: watch - diplom_middle",
+			"detail": "webpack --watch"
+		}
+	]
+}
