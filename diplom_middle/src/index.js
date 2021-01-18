@@ -8,14 +8,23 @@ import presentHandler from './modules/presentHandler';
 import popup from './modules/popup';
 import formHandler from './modules/formHandler';
 import slider from './modules/slider';
+import SliderCarousel from './modules/sliderCarousel.js';
 
 
-
-
-menuClubs();
-scrollHandler();
-popup();
-handleBurger();
-formHandler();
-presentHandler();
-slider();
+try{
+    menuClubs();
+    scrollHandler();
+    popup();
+    handleBurger();
+    formHandler();
+    presentHandler();
+    slider();
+   // sliderGallery();
+   const options = { 
+    wrap: '.services-slider',
+    slidesToShow: 5,
+    infinity: true,
+}
+const carousel = new SliderCarousel(options);
+carousel.init();
+}catch(e){}

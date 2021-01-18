@@ -2138,6 +2138,10 @@ footer .footer-bottom .right .socials .social-icon:hover a {
     text-transform: uppercase;
     margin-bottom: 20px
 }
+.active{
+    opacity: 1 !important;
+    position: absolute;
+}
 
 .popup .form-content p {
     margin: 8px auto;
@@ -2461,11 +2465,11 @@ p.personal-data input[type=checkbox]:checked+label:before {
         padding-left: 10px;
         padding-right: 10px
     }
-
+/* 
     #gallery .gallery-slider .slider-arrow.next,
     #gallery .gallery-slider .slider-arrow.prev {
         display: none !important
-    }
+    } */
 
     #gallery .gallery-slider .slider-dots {
         background-color: rgba(79, 25, 52, .5);
