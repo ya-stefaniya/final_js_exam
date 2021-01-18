@@ -1380,12 +1380,8 @@ nav.popup-menu .close-menu-btn img {
     font-size: 36px
 }
 
-.slider-dots {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    margin-left: -65px;
-    z-index: 1000
+#gallery .gallery-slider .slider-dots:first-child{
+    margin-left: 0;
 }
 
 .slider-dots li {
@@ -1602,7 +1598,11 @@ nav.popup-menu .close-menu-btn img {
 }
 
 #gallery .gallery-bg {
-    background: url(../images/gallery-bg.png) left center no-repeat
+    background: url(../images/gallery-bg.png) left center no-repeat;
+    height: 281px;
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: 100px;
 }
 
 #gallery .gallery-slider {
@@ -1610,12 +1610,26 @@ nav.popup-menu .close-menu-btn img {
     padding-right: 75px;
     max-width: 900px;
     margin: 0 auto;
-    text-align: center
+    text-align: center;
 }
 
 #gallery .gallery-slider .slide {
-    margin: 0 auto !important;
-    width: 100%
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.active{
+    opacity: 1 !important;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s
 }
 
 #gallery .gallery-slider .slider-arrow {
@@ -1637,17 +1651,39 @@ nav.popup-menu .close-menu-btn img {
 }
 
 #gallery .gallery-slider .slider-arrow.prev {
-    left: 0
+    left: 15rem;
 }
 
 #gallery .gallery-slider .slider-arrow.next {
-    right: 0
+    right: 15rem;
 }
 
 #gallery .gallery-slider .slider-dots {
-    left: 50%;
-    margin-left: -65px;
-    bottom: 5%
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    margin: 20px auto 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    z-index: 5;
+    left: 0;
+}
+#gallery .gallery-slider .slider-dots .dot{
+    width: 24px;
+    height: 6px;
+    background-color: #fff;
+    margin: 0 5px;
+    cursor: pointer;
+}
+#gallery .gallery-slider .slider-dots:first-child {
+    margin-left: 0;
+}
+#gallery .gallery-slider .slider-dots .dot-active{
+    background-color: #f4c71b;;
 }
 
 #cards {
@@ -2138,10 +2174,7 @@ footer .footer-bottom .right .socials .social-icon:hover a {
     text-transform: uppercase;
     margin-bottom: 20px
 }
-.active{
-    opacity: 1 !important;
-    position: absolute;
-}
+
 
 .popup .form-content p {
     margin: 8px auto;
@@ -2259,6 +2292,15 @@ p.personal-data input[type=checkbox]:checked+label:before {
     margin-top: 30px
 }
 
+@media (max-width:1240px) {
+    #gallery .gallery-slider .slider-arrow.prev {
+        left: 5rem;
+    }
+    #gallery .gallery-slider .slider-arrow.next {
+        right: 5rem;
+    }
+}
+
 @media only screen and (max-width:1199px) {
     .services-slider .slider-arrow.prev {
         left: 25px
@@ -2358,10 +2400,10 @@ p.personal-data input[type=checkbox]:checked+label:before {
     .main-slider .slide.type2 .slide-text .validity {
         text-align: center
     }
-
+/* 
     .slider-dots {
         bottom: 56px
-    }
+    } */
 
     #clubs .content .bottom {
         -webkit-box-pack: center;
@@ -2377,7 +2419,14 @@ p.personal-data input[type=checkbox]:checked+label:before {
         right: 3px
     }
 }
-
+@media (max-width:990px) {
+    #gallery .gallery-slider .slider-arrow.prev {
+        left: 3rem;
+    }
+    #gallery .gallery-slider .slider-arrow.next {
+        right: 3rem;
+    }
+}
 @media only screen and (max-width:880px) {
     header .top-menu ul li a {
         padding-left: 15px
@@ -2471,13 +2520,8 @@ p.personal-data input[type=checkbox]:checked+label:before {
         display: none !important
     } */
 
-    #gallery .gallery-slider .slider-dots {
-        background-color: rgba(79, 25, 52, .5);
-        padding-top: 12px;
-        padding-left: 5px;
-        padding-right: 5px
-    }
-
+   
+   
     #cards .content {
         -ms-flex-wrap: wrap;
         -o-flex-wrap: wrap;

@@ -3,20 +3,32 @@ const sliderGallery = () => {
     const slider = document.querySelector('.gallery-slider');
     let slide = slider.querySelectorAll('.slide');
     console.log('slide: ', slide);
-
-    slide.forEach(slide => {
-        //slide.style.position = 'absolute';
-        if(!slide.classList.contains('active')){
-            slide.style.opacity = '0';
-            
-
-        }
-    });
+    
     let interval;
     let currentSlide = 0; 
+    //slide[1].classList.add('active');
     
-//номер слайда
+    slide.forEach(slide => {
+        slide.style.position = 'absolute';
+        if(!slide.classList.contains('active')){
+            slide.style.opacity = '0';
+        }
+    });
 
+    const addDot = () => {
+        let ul = document.createElement('ul');
+        ul.classList.add('slider-dots');
+        slider.append(ul);
+        for (let i = 0; i < slide.length; i++){
+            let li = document.createElement('li');
+            li.classList.add('dot');
+            ul.append(li);
+        }
+        const allLi = ul.querySelectorAll('li');
+        allLi[0].classList.add('dot-active');
+    };
+    addDot();
+//номер слайда
     const prevSlide = (elem, index, strClass) => { //действие для слайда который будет меняться
         elem[index].classList.remove(strClass);
     };
@@ -28,9 +40,7 @@ const sliderGallery = () => {
             currentSlide = 0
         }
         elem[index].classList.add(strClass);
-
     };
-
     const autoPlaySlide = () =>{
         prevSlide(slide, currentSlide, 'active');
         //console.log('currentSlide: ', currentSlide);
@@ -40,9 +50,8 @@ const sliderGallery = () => {
             currentSlide=0;
         }
         nextSlide(slide, currentSlide, 'active');
-
     }
-    const startSlide = (time = 3000) =>{
+    const startSlide = (time = 10000) =>{
         interval = setInterval(autoPlaySlide, time);
     };
 

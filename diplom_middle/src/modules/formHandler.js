@@ -1,3 +1,5 @@
+import closeModal from './closeModal';
+
 const formHandler= () => {
     const forms = document.querySelectorAll('form');
 
@@ -32,23 +34,21 @@ const formHandler= () => {
             const popupClose = () =>{
                 const popups = document.querySelectorAll('.popup');
                 popups.forEach(popup=>{
-                popup.style.display = 'block' ? popup.style.display = 'none' : popup.style.display ='';
-                thanks.style.display = 'block';
+                    popup.style.display = 'block' ? popup.style.display = 'none' : popup.style.display ='';
+                    thanks.style.display = 'block';
                 });
                 item.reset();
                 loader.remove();
             }
             const message = (item, type) =>{
+                console.log('type: ', type);
                 pm.classList.add('message');
                 pm.style.fontSize = '16px';
                 pm.style.color= 'red'; 
                 type === 'checkbox' ? pm.innerHTML = 'Нужно поставить галочку!' :
                 pm.innerHTML = 'Нужно выбрать зал!'
                 item.appendChild(pm);
-                if(item.childNodes.length > 14){
-                    item.removeChild(pm);
-                }
-            }
+            } 
             const checkBox = () => {
                 const allInputs = item.querySelectorAll('input'); 
                 allInputs.forEach(input => {
@@ -63,7 +63,8 @@ const formHandler= () => {
                             pm.remove();
                             sendForm();
                         } else {
-                            message(item, input.type)
+                            const ch = document.querySelector('.message');
+                            if(!ch) message(item, input.type);
                             checkbox = false;
                         }
                     }
