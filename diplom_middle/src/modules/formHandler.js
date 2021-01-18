@@ -30,33 +30,54 @@ const formHandler= () => {
                 loader.appendChild(dot2);
                 loader.appendChild(dot3);
                 item.appendChild(loader);
+                // setTimeout(() => {
+                //     loader.remove();
+                //     goWrong();
+                //     popupClose();
+                // }, 6000);
             }                
             const popupClose = () =>{
                 const popups = document.querySelectorAll('.popup');
                 popups.forEach(popup=>{
                     popup.style.display = 'block' ? popup.style.display = 'none' : popup.style.display ='';
                     thanks.style.display = 'block';
+                    setTimeout(() => {
+                        thanks.style.display = 'none';
+                    }, 3500);
                 });
                 item.reset();
                 loader.remove();
             }
             const message = (item, type) =>{
-                console.log('type: ', type);
                 pm.classList.add('message');
                 pm.style.fontSize = '16px';
                 pm.style.color= 'red'; 
                 type === 'checkbox' ? pm.innerHTML = 'Нужно поставить галочку!' :
                 pm.innerHTML = 'Нужно выбрать зал!'
-                item.appendChild(pm);
+                const personalData =  item.querySelector('.personal-data');
+                if(personalData) {
+                    personalData.appendChild(pm);
+                } else {
+                    item.appendChild(pm);
+                }
             } 
             const checkBox = () => {
                 const allInputs = item.querySelectorAll('input'); 
+                if(item.id === 'footer_form'){
+                    if(allInputs[0].checked || allInputs[1].checked) {
+                        pm.remove();
+                        checkbox = true;
+                        sendForm();
+                    }
+                    return;
+                }
                 allInputs.forEach(input => {
-                    if(input.type === 'checkbox' || (input.type === 'radio')){
+                    if(input.type === 'checkbox' || input.type === 'radio'){
                         input.setAttribute('required', true)
                         input.addEventListener('input', ()=>{
                             if(input.checked)
                             pm.remove();
+                            checkbox = true;
                         })        
                         if(input.checked){
                             checkbox = true;

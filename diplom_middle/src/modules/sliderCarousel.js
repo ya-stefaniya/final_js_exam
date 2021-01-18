@@ -65,7 +65,7 @@ class SliderCarousel{
                 transition: transform .3s !important;
                 will-change: tranform !important;
                 padding: 0 !important;
-                margin: 0 29px !important;
+                margin: 0 25px !important;
             }
             .sliderCarousel__slide{
                 width: ${this.options.widthSlide}% !important;
