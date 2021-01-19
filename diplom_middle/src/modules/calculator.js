@@ -64,18 +64,16 @@ const calculator = ()=>{
         
         cardOrderForm.addEventListener('change', e => {
             let target = e.target;
-            if(window.location.pathname === '/diplom_middle/' || window.location.pathname === '/diplom_middle/index.html'){
-                if(target.name === 'card-type'){
-                    if(mozaika.checked){
-                        ajax(mozaika.value)
-                    }else if(schelkovo.checked){
-                        ajax(schelkovo.value);
-                    }
-                }else if(target.matches('#card_leto_mozaika')){
-                    ajax('mozaika');
-                }else if(target.matches('#card_leto_schelkovo')){
-                    ajax('schelkovo');
+            if(target.name === 'card-type'){
+                if(mozaika.checked){
+                    ajax(mozaika.value)
+                }else if(schelkovo.checked){
+                    ajax(schelkovo.value);
                 }
+            }else if(target.matches('#card_leto_mozaika')){
+                ajax('mozaika');
+            }else if(target.matches('#card_leto_schelkovo')){
+                ajax('schelkovo');
             }
         });
     }catch(e){}
