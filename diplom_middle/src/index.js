@@ -22,6 +22,7 @@ try{
     presentHandler();
     slider();
     sliderGallery();
+    calculator();
     const options = { 
     wrap: '.services-slider',
     slidesToShow: 4,

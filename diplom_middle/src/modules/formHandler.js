@@ -135,10 +135,14 @@ const formHandler= () => {
         document.addEventListener('input', () => {
         let allNames = document.querySelectorAll('input[name="name"]');
             [...allNames].forEach(name=>{
-                name.value =  name.value.replace(/[^а-яё ]/gi, '');
-                name.value.length < 2 ? 
-                name.setCustomValidity('Имя должно состоять минимум из 2 букв'):
-                name.setCustomValidity('');
+                if(name.getAttribute("placeholder") === 'Промокод'){
+                    name.value =  name.value.replace(/[^а-яё\d ]/gi, '');
+                } else {
+                    name.value =  name.value.replace(/[^а-яё ]/gi, '');
+                    name.value.length < 2 ? 
+                    name.setCustomValidity('Имя должно состоять минимум из 2 букв'):
+                    name.setCustomValidity('');
+                }
             })
             let allphones = document.querySelectorAll('input[name="phone"]');
             [...allphones].forEach(phone=>{
