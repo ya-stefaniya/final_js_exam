@@ -15,6 +15,7 @@ import smoothScroll from './modules/smoothScroll';
 
 
 
+
 try{
     smoothScroll();
     menuClubs();

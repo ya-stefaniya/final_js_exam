@@ -4,7 +4,8 @@ const smoothScroll = () => {
     const menu = document.querySelector('.top-menu'),
         popupMenu = document.querySelector('.popup-menu'),
         popupMenuLinks = popupMenu.querySelectorAll("ul>li>a"),
-        links = menu.querySelectorAll("ul>li>a");
+        links = menu.querySelectorAll("ul>li>a"),
+        arrow = document.getElementById('totop');
     const clickHandler = (e) =>{
         e.preventDefault();
         let target = e.target;
