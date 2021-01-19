@@ -8,12 +8,15 @@ import presentHandler from './modules/presentHandler';
 import popup from './modules/popup';
 import formHandler from './modules/formHandler';
 import slider from './modules/slider';
-import SliderCarousel from './modules/sliderCarousel.js';
-import sliderGallery from './modules/sliderGallery.js';
+import SliderCarousel from './modules/sliderCarousel';
+import sliderGallery from './modules/sliderGallery';
+import smoothScroll from './modules/smoothScroll';
+
 
 
 
 try{
+    smoothScroll();
     menuClubs();
     scrollHandler();
     popup();
