@@ -12,8 +12,9 @@ const formHandler= () => {
                 h4 = thanks.querySelector('h4'),
                 p = thanks.querySelector('p'),
                 allInputs = item.querySelectorAll('input'),
+                priceTotal = document.querySelector('#price-total'),
                 pm = document.createElement('p');
-            let checkbox = false, isValid = false;
+            let checkbox = false;
             
             const goWrong = () =>{
                 //сообщение если error
@@ -96,7 +97,7 @@ const formHandler= () => {
             }
             checkBox();
             const formdata = new FormData(item);
-
+            
             const body = {};
             formdata.forEach((val, key) => {
                 body[key] = val;
@@ -110,6 +111,7 @@ const formHandler= () => {
                     setTimeout(()=>{
                         checkBox();
                         popupClose();
+                        priceTotal.textContent = '1999';
                         item.reset();
                     }, 1500);  
                 })
@@ -120,6 +122,9 @@ const formHandler= () => {
                         goWrong();
                         popupClose();
                         item.reset();
+                        try{
+                        priceTotal.textContent = '1999';
+                        } catch(e) {}
                     }, 1500);   
                 })
             }
