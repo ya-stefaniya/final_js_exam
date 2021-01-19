@@ -5,6 +5,7 @@ const smoothScroll = () => {
         popupMenu = document.querySelector('.popup-menu'),
         popupMenuLinks = popupMenu.querySelectorAll("ul>li>a"),
         links = menu.querySelectorAll("ul>li>a");
+        
     const clickHandler = (e) =>{
         e.preventDefault();
         let target = e.target;
