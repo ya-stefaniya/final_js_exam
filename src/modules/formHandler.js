@@ -4,7 +4,6 @@ const formHandler= () => {
     [...forms].forEach((item) => {
 
         item.addEventListener('submit', (e) => {
-
             e.preventDefault();
 
             const loader = document.createElement('div'),
@@ -63,6 +62,16 @@ const formHandler= () => {
             const checkBox = () => {                
                 //последняя форма 
                 if(item.id === 'footer_form'){
+                    const chooseClub = item.querySelector('.choose-club'),
+                    chooseClubInputs = chooseClub.querySelectorAll('input');
+                    chooseClubInputs.forEach(input => {
+                        input.addEventListener('input', ()=>{
+                        if(input.checked)
+                        pm.remove();
+                        checkbox = true;
+                        });
+                    });
+                    
                     if(allInputs[0].checked || allInputs[1].checked) {
                         pm.remove();
                         checkbox = true;
@@ -81,7 +90,7 @@ const formHandler= () => {
                             pm.remove();
                             checkbox = true;
                         })        
-                        if(input.checked ){
+                        if(input.checked){
                             checkbox = true;
                             pm.remove();
                             sendForm();
@@ -95,7 +104,6 @@ const formHandler= () => {
                 })
             }
             checkBox();
-
 
             if(item.id === 'card_order'){
                 const input = item.querySelector('input[name="price"]');
@@ -113,9 +121,7 @@ const formHandler= () => {
                 }
             }
 
-
             const formdata = new FormData(item);
-            
             const body = {};
             formdata.forEach((val, key) => {
                 body[key] = val;
