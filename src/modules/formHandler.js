@@ -50,8 +50,7 @@ const formHandler= () => {
             }
             const message = (item, type) =>{
                 pm.classList.add('message');
-                pm.style.fontSize = '16px';
-                pm.style.color= 'red'; 
+                pm.style.cssText = 'font-size:16px; color: red;'
                 type === 'checkbox' ? pm.innerHTML = 'Нужно поставить галочку!' :
                 pm.innerHTML = 'Нужно выбрать клуб!'
                 const personalData =  item.querySelector('.personal-data');
