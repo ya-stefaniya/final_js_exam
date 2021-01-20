@@ -95,6 +95,25 @@ const formHandler= () => {
                 })
             }
             checkBox();
+
+
+            if(item.id === 'card_order'){
+                const input = item.querySelector('input[name="price"]');
+                if(priceTotal){
+                    input.value = priceTotal.textContent;
+                }else{
+                    const inputsCardTypes = document.querySelectorAll('input[name="card-type"]');
+                    inputsCardTypes.forEach(card => {
+                        if(card.checked){
+                            const label = document.querySelector(`label[for="${card.id}"]`);
+                            const cost = label.querySelector('.cost').innerText.replace(/i/, '');
+                            input.value = cost;
+                        }
+                    })
+                }
+            }
+
+
             const formdata = new FormData(item);
             
             const body = {};
